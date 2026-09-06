@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="arch-title arch-desc">
+  <title id="arch-title">周报助手交互与执行流水线</title>
+  <desc id="arch-desc">从自然语言输入到职场提炼、Markdown卡片确认再到原生Excel安全落地的完整工作流</desc>
+
+  <defs>
+    <linearGradient id="step-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#131B2A"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="260" rx="16" fill="#0B0F17" stroke="#1E293B" stroke-width="1.5"/>
+
+  <!-- Step 1: 口语输入 -->
+  <g transform="translate(48, 36)">
+    <rect width="240" height="188" rx="10" fill="url(#step-bg)" stroke="#334155" stroke-width="1"/>
+    <rect x="16" y="16" width="32" height="24" rx="4" fill="#1E293B"/>
+    <text x="26" y="32" font-family="ui-monospace, monospace" font-size="12" font-weight="bold" fill="#38BDF8">01</text>
+    <text x="56" y="33" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#F8FAFC">自然语言碎碎念</text>
+    <path d="M 16 52 L 224 52" stroke="#1E293B" stroke-width="1"/>
+    
+    <text x="16" y="74" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">无需死记表格复杂格式：</text>
+    <rect x="16" y="86" width="208" height="54" rx="6" fill="#090D14" stroke="#1E293B"/>
+    <text x="24" y="106" font-family="-apple-system, sans-serif" font-size="11" fill="#64748B">"改了积分一票否决bug，</text>
+    <text x="24" y="126" font-family="-apple-system, sans-serif" font-size="11" fill="#64748B">跟产品对了下周发版..."</text>
+    <text x="16" y="162" font-family="-apple-system, sans-serif" font-size="11" fill="#10B981">✓ 支持从上周周报自动继承</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 298 130 L 328 130" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 2: 智能职场化润色 -->
+  <g transform="translate(338, 36)">
+    <rect width="240" height="188" rx="10" fill="url(#step-bg)" stroke="#0284C7" stroke-width="1.2"/>
+    <rect x="16" y="16" width="32" height="24" rx="4" fill="#0369A1"/>
+    <text x="26" y="32" font-family="ui-monospace, monospace" font-size="12" font-weight="bold" fill="#E0F2FE">02</text>
+    <text x="56" y="33" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#38BDF8">智能职场化提炼</text>
+    <path d="M 16 52 L 224 52" stroke="#1E293B" stroke-width="1"/>
+
+    <text x="16" y="74" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">动作+系统+手段+价值：</text>
+    <rect x="16" y="86" width="208" height="54" rx="6" fill="#090D14" stroke="#1E293B"/>
+    <text x="24" y="106" font-family="-apple-system, sans-serif" font-size="11" fill="#38BDF8">"排查并修复积分逻辑异常，</text>
+    <text x="24" y="126" font-family="-apple-system, sans-serif" font-size="11" fill="#38BDF8">优化边界校验确保准确..."</text>
+    <text x="16" y="162" font-family="-apple-system, sans-serif" font-size="11" fill="#38BDF8">✓ 主动追问责任人与协作人</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 588 130 L 618 130" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: Markdown 预览确认 -->
+  <g transform="translate(628, 36)">
+    <rect width="240" height="188" rx="10" fill="url(#step-bg)" stroke="#334155" stroke-width="1"/>
+    <rect x="16" y="16" width="32" height="24" rx="4" fill="#1E293B"/>
+    <text x="26" y="32" font-family="ui-monospace, monospace" font-size="12" font-weight="bold" fill="#F59E0B">03</text>
+    <text x="56" y="33" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#F8FAFC">预览卡片与确认锁</text>
+    <path d="M 16 52 L 224 52" stroke="#1E293B" stroke-width="1"/>
+
+    <text x="16" y="74" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">严格遵守生成安全底线：</text>
+    <rect x="16" y="86" width="208" height="54" rx="6" fill="#090D14" stroke="#1E293B"/>
+    <text x="24" y="106" font-family="-apple-system, sans-serif" font-size="11" fill="#F59E0B">📋 Markdown 排版卡片核对</text>
+    <text x="24" y="126" font-family="-apple-system, sans-serif" font-size="11" fill="#E2E8F0">用户回复「确认」后方执行</text>
+    <text x="16" y="162" font-family="-apple-system, sans-serif" font-size="11" fill="#F59E0B">✓ 杜绝幻觉与提前误生成</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <path d="M 878 130 L 908 130" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 4: Python openpyxl 落地 -->
+  <g transform="translate(918, 36)">
+    <rect width="234" height="188" rx="10" fill="url(#step-bg)" stroke="#107C41" stroke-width="1.2"/>
+    <rect x="16" y="16" width="32" height="24" rx="4" fill="#107C41"/>
+    <text x="26" y="32" font-family="ui-monospace, monospace" font-size="12" font-weight="bold" fill="#FFFFFF">04</text>
+    <text x="56" y="33" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#22C55E">原生 Excel 安全写入</text>
+    <path d="M 16 52 L 218 52" stroke="#1E293B" stroke-width="1"/>
+
+    <text x="16" y="74" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">Python openpyxl 引擎：</text>
+    <rect x="16" y="86" width="202" height="54" rx="6" fill="#090D14" stroke="#1E293B"/>
+    <text x="24" y="106" font-family="ui-monospace, monospace" font-size="11" fill="#22C55E">工作周报 - xxx.xlsx</text>
+    <text x="24" y="126" font-family="-apple-system, sans-serif" font-size="11" fill="#64748B">直达桌面 ~/Desktop/周报/</text>
+    <text x="16" y="162" font-family="-apple-system, sans-serif" font-size="11" fill="#22C55E">✓ 单元格公式、样式 100% 保真</text>
+  </g>
+</svg>
