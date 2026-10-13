@@ -140,6 +140,7 @@ class GenerateWeeklyReportTest(unittest.TestCase):
             [sys.executable, str(script_path), str(json_file)],
             capture_output=True,
             text=True,
+            encoding="utf-8",  # 脚本固定以 UTF-8 输出 JSON，不跟随 Windows 控制台代码页
             env=env,
         )
         self.assertEqual(result.returncode, 0)

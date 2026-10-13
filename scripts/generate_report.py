@@ -18,6 +18,10 @@ from openpyxl.styles import Alignment
 # 屏蔽 openpyxl 读取复合格式与条件格式时的非关键告警
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
+# Windows 控制台默认用 GBK，中文文件名与消息会乱码；固定 UTF-8 保证调用方按 UTF-8 解码即可读
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SKILL_DIR = os.path.dirname(SCRIPT_DIR)
 
