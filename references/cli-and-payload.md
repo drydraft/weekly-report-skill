@@ -1,7 +1,7 @@
 # CLI 与 Payload 规范
 
 上级：[SKILL.md](../SKILL.md)。脚本位置：`<skill_dir>/scripts/generate_report.py`；
-**`<skill_dir>` = `~/.pi/agent/skills/weekly-report`**（PowerShell 写作 `"$env:USERPROFILE\.pi\agent\skills\weekly-report"`）。
+**`<skill_dir>` 为 `SKILL.md` 所在目录**（Antigravity 默认 `~/.gemini/config/plugins/weekly-report/skills/weekly-report`，Codex 默认 `~/.codex/skills/weekly-report`，Pi Agent 默认 `~/.pi/agent/skills/weekly-report`）。运行命令时替换为实际绝对路径。
 
 脚本直接执行，**不要读进上下文**；只有排障时才读源码。
 
@@ -94,6 +94,8 @@
 | --- | --- | --- |
 | `WKR_TEMPLATE_PATH` | 自定义 Excel 模板路径 | `<skill_dir>/templates/工作周报模板.xlsx` |
 | `WKR_OUTPUT_DIR` | 周报输出目录 | `~/Desktop/周报/` |
+
+使用自定义模板时，需显式设置 `WKR_TEMPLATE_PATH` 指向对应文件；仅将新文件放入 `templates/` 不会改变默认模板。
 
 > 测试用例通过 `WKR_OUTPUT_DIR` 指向临时目录来隔离副作用，改动脚本时不要破坏这一点。
 

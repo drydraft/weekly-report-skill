@@ -47,7 +47,8 @@ description: "把一周的大白话工作碎碎念职场化提炼，填充进公
 
 ## Files — Load On Demand
 
-**`<skill_dir>` = `~/.pi/agent/skills/weekly-report`**（PowerShell 中写作 `"$env:USERPROFILE\.pi\agent\skills\weekly-report"`）
+**`<skill_dir>` 为本 `SKILL.md` 所在目录**（Antigravity 插件默认 `~/.gemini/config/plugins/weekly-report/skills/weekly-report`，Codex 默认 `~/.codex/skills/weekly-report`，Pi Agent 默认 `~/.pi/agent/skills/weekly-report`）。调用脚本时使用实际绝对路径。
+若需使用公司定制模板，可放置到 `templates/` 下并设置 `WKR_TEMPLATE_PATH` 指向它；默认仍为 `templates/工作周报模板.xlsx`。
 
 | File | When to load |
 | --- | --- |
@@ -75,18 +76,18 @@ description: "把一周的大白话工作碎碎念职场化提炼，填充进公
 ### 门 2 — 预览与确认
 
 - 按 `workflows/A-new-report.md` 的预览卡片模板输出 Markdown 预览。
-- 用 `AskUserQuestion` 或直接请用户回复确认；**未拿到明确确认不得进入门 3**。
+- 向用户发起确认提问或直接请用户回复确认；**未拿到明确确认不得进入门 3**。
 - 用户提出修改 → 改完重新出预览。
 
 **Postconditions**：用户明确确认。不满足 → 停在门 2。
 
 ### 门 3 — 校验 → 生成 → 交付
 
-1. 用 `write` 把 payload 写到工作目录的 `.weekly_report_payload.json`（结构与字段见 `references/cli-and-payload.md`）。
+1. 把 payload 写到工作目录的 `.weekly_report_payload.json`（结构与字段见 `references/cli-and-payload.md`）。
 2. **先校验**：
 
    ```powershell
-   python "$env:USERPROFILE\.pi\agent\skills\weekly-report\scripts\validate_payload.py" .weekly_report_payload.json
+   python "<skill_dir>/scripts/validate_payload.py" .weekly_report_payload.json
    ```
 
    返回 `{"status":"ok"}` 才继续；返回 `{"status":"invalid", "errors":[...]}` → 按 `errors` 修正 payload，重新校验。
@@ -94,12 +95,12 @@ description: "把一周的大白话工作碎碎念职场化提炼，填充进公
 3. **再生成**：
 
    ```powershell
-   python "$env:USERPROFILE\.pi\agent\skills\weekly-report\scripts\generate_report.py" .weekly_report_payload.json
+   python "<skill_dir>/scripts/generate_report.py" .weekly_report_payload.json
    ```
 
    返回 `{"status":"error", ...}` → 修 payload 重新生成，不得跳过。
 
-4. 删除临时 payload 文件，向用户回报生成路径（用 `present_files` 打开或直接给绝对路径）。
+4. 删除临时 payload 文件，向用户回报生成文件的绝对路径（或使用当前 Agent 的文件展示能力打开）。
 
 **Postconditions**：脚本返回 `status: success` 且目标文件存在。
 

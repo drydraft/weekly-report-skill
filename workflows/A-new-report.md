@@ -51,7 +51,7 @@
 👉 请确认以上内容无误，回复「确认」后我将基于 Excel 模板为您生成周报。
 ```
 
-- 用 `AskUserQuestion` 或请用户直接回复确认。
+- 向用户发起确认提问或请用户直接回复确认。
 - 用户提修改 → 改 payload 草稿 → **重新出预览**，不得带着未确认的改动进入门 3。
 - 若用了 `fields.md` 的默认值（姓名、部门、饱和度），在预览里显式标出来。
 
@@ -61,22 +61,22 @@
 
 **数据流协议（严格按序）**：
 
-1. 用 `write` 把 payload 写到工作目录 `.weekly_report_payload.json`。
+1. 把确认后的 payload 写到工作目录 `.weekly_report_payload.json`。
 2. 校验：
 
    ```powershell
-   python "$env:USERPROFILE\.pi\agent\skills\weekly-report\scripts\validate_payload.py" .weekly_report_payload.json
+   python "<skill_dir>/scripts/validate_payload.py" .weekly_report_payload.json
    ```
 
    期望 `{"status":"ok",...}`。返回 `invalid` → 按 `errors` 修正后重跑（最多 3 轮）。
 3. 生成：
 
    ```powershell
-   python "$env:USERPROFILE\.pi\agent\skills\weekly-report\scripts\generate_report.py" .weekly_report_payload.json
+   python "<skill_dir>/scripts/generate_report.py" .weekly_report_payload.json
    ```
 
    期望 `{"status":"success","file":"C:\\...\\工作周报 - 张三 2026-05-25至2026-05-29.xlsx"}`。
-4. 删除临时 JSON，用 `present_files` 打开生成的文件（或给出绝对路径），并回报：
+4. 删除临时 JSON，向用户提供生成文件的绝对路径（或使用当前 Agent 的文件展示能力打开），并回报：
 
    ```
    🎉 周报已生成：<绝对路径>

@@ -5,7 +5,7 @@
 <p align="center">
   <a href="https://agentskills.io"><img src="https://img.shields.io/badge/standard-Agent_Skills-0284C7?style=flat-square" alt="Agent Skills Standard"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-10B981?style=flat-square" alt="MIT License"></a>
-  <a href="#-支持平台"><img src="https://img.shields.io/badge/runtime-Pi_Agent_|_OpenCode_|_Claude_Code-8B5CF6?style=flat-square" alt="Runtimes"></a>
+  <a href="#-支持平台"><img src="https://img.shields.io/badge/runtime-Pi_Agent_|_OpenCode_|_Claude_Code_|_Codex_|_Antigravity-8B5CF6?style=flat-square" alt="Runtimes"></a>
   <a href="#-为什么需要周报助手"><img src="https://img.shields.io/badge/Excel-100%25_Fidelity-107C41?style=flat-square" alt="Excel Fidelity"></a>
   <a href="#-校验与测试"><img src="https://img.shields.io/badge/checks-22_tests_passing-0891B2?style=flat-square" alt="Tests"></a>
 </p>
@@ -131,7 +131,23 @@ git clone https://github.com/drydraft/weekly-report-skill.git \
   ~/.config/opencode/superpowers/skills/weekly-report
 ```
 
-#### 方案 C：Claude Code / Codex / 通用 Agent
+#### 方案 C：Codex
+
+```bash
+git clone https://github.com/drydraft/weekly-report-skill.git \
+  ~/.codex/skills/weekly-report
+```
+
+#### 方案 D：Antigravity（全局插件目录）
+
+```bash
+git clone https://github.com/drydraft/weekly-report-skill.git \
+  ~/.gemini/config/plugins/weekly-report/skills/weekly-report
+```
+
+> 另在 `~/.gemini/config/plugins/weekly-report/plugin.json` 中声明插件元数据后即可在 Antigravity 定制页直接管理。
+
+#### 方案 E：Claude Code / 通用 Agent
 
 ```bash
 git clone https://github.com/drydraft/weekly-report-skill.git \
@@ -226,7 +242,7 @@ python scripts/generate_report.py --test
 | `WKR_TEMPLATE_PATH` | 自定义 Excel 模板路径 | Skill 自带 `templates/工作周报模板.xlsx` |
 | `WKR_OUTPUT_DIR` | 周报 Excel 默认保存目录 | 用户桌面目录 `~/Desktop/周报/` |
 
-换成自家公司模板时：把模板放到 `templates/` 或设 `WKR_TEMPLATE_PATH` 指向它，再跑一次 `--validate-template` 确认脚本能识别到四个区块（`上周工作完成情况` / `本周重要工作项` / `下周工作计划` / `工作饱和度评估`）。区块是按 **A 列表头文字**动态定位的，所以改版模板只要保留这些标题即可。
+换成自家公司模板时：设置 `WKR_TEMPLATE_PATH` 指向对应模板文件（放在 `templates/` 下也需显式设置 `WKR_TEMPLATE_PATH`，不会自动覆盖默认模板），再跑一次 `--validate-template` 确认脚本能识别到四个区块（`上周工作完成情况` / `本周重要工作项` / `下周工作计划` / `工作饱和度评估`）。区块是按 **A 列表头文字**动态定位的，所以改版模板只要保留这些标题即可。
 
 ---
 
@@ -255,6 +271,8 @@ weekly-report-skill/
 ├── SKILL.md                        # Agent 技能规范：控制流 · 硬门禁 · Execution Protocol
 ├── README.md                       # 本文档
 ├── LICENSE                         # MIT
+├── agents/
+│   └── openai.yaml                 # Codex UI 元数据
 ├── references/                     # 按需加载的知识
 │   ├── fields.md                   #   必填字段 · 取值枚举 · 单元格映射
 │   ├── polishing.md                #   职场化润色规范

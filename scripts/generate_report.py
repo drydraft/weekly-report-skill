@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-周报助手脚本 - 读取模板和生成周报 (Pi Agent 适配版)
+周报助手脚本 - 读取模板和生成周报 (多 Agent 适配版)
 """
 
 import argparse
@@ -384,7 +384,7 @@ def generate_weekly_report(report_data):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="周报助手 CLI (Pi Agent 专用)")
+    parser = argparse.ArgumentParser(description="周报助手 CLI")
     parser.add_argument(
         "input_file",
         nargs="?",

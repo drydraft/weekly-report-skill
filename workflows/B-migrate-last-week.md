@@ -5,7 +5,7 @@
 ## 1. 取顺延建议
 
 ```powershell
-python "$env:USERPROFILE\.pi\agent\skills\weekly-report\scripts\generate_report.py" --migrate-last-week
+python "<skill_dir>/scripts/generate_report.py" --migrate-last-week
 ```
 
 脚本扫描输出目录里最新的一份周报（`*周报 - *.xlsx`），返回：
