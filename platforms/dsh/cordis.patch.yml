@@ -1,0 +1,5 @@
+# dsh-weekly-report — Weekly Report Assistant bundle for DeepSeek Harness (DSH).
+# Registers the bundled weekly-report skill on ctx.skills with zero extra runtime dependencies.
+- insert:
+    - id: dsh-weekly-report
+      name: dsh-weekly-report

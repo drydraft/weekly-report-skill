@@ -1,7 +1,7 @@
 # CLI 与 Payload 规范
 
 上级：[SKILL.md](../SKILL.md)。脚本位置：`<skill_dir>/scripts/generate_report.py`；
-**`<skill_dir>` 为 `SKILL.md` 所在目录**（Antigravity 默认 `~/.gemini/config/plugins/weekly-report/skills/weekly-report`，Codex 默认 `~/.codex/skills/weekly-report`，Pi Agent 默认 `~/.pi/agent/skills/weekly-report`）。运行命令时替换为实际绝对路径。
+**`<skill_dir>` 为 `SKILL.md` 所在目录**（Pi `~/.pi/agent/skills/weekly-report`、Codex `~/.codex/skills/weekly-report`、DeepSeek Harness `~/.dsh/skills/weekly-report`、Antigravity `~/.gemini/config/plugins/weekly-report/skills/weekly-report`、Claude Code `~/.claude/skills/weekly-report`）。运行命令时替换为实际绝对路径。
 
 脚本直接执行，**不要读进上下文**；只有排障时才读源码。
 

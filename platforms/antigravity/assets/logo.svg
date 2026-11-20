@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Weekly Report Assistant">
+  <rect x="8" y="8" width="112" height="112" rx="26" fill="#1B6B4A"/>
+  <rect x="28" y="28" width="72" height="72" rx="12" fill="#F7F6F2"/>
+  <rect x="38" y="40" width="22" height="10" rx="3" fill="#1B6B4A"/>
+  <rect x="66" y="40" width="24" height="10" rx="3" fill="#D5D0C5"/>
+  <rect x="38" y="59" width="22" height="10" rx="3" fill="#E06D44"/>
+  <rect x="66" y="59" width="24" height="10" rx="3" fill="#D5D0C5"/>
+  <rect x="38" y="78" width="52" height="10" rx="3" fill="#181A1F" opacity="0.8"/>
+</svg>

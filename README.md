@@ -1,73 +1,82 @@
 <p align="center">
-  <img src="./assets/readme/hero.svg" width="100%" alt="周报助手 Weekly Report Assistant：对 AI 讲几句大白话碎碎念，自动完成职场化提炼，并填充至公司标准 Excel 周报模板。">
+  <img src="./assets/readme/hero.svg" width="100%" alt="周报助手 weekly-report-skill：面向 Pi、Codex、DeepSeek Harness、Antigravity 与 Claude Code 的多平台 Excel 周报自动化 Agent Skill">
 </p>
 
 <p align="center">
-  <a href="https://agentskills.io"><img src="https://img.shields.io/badge/standard-Agent_Skills-0284C7?style=flat-square" alt="Agent Skills Standard"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-10B981?style=flat-square" alt="MIT License"></a>
-  <a href="#-支持平台"><img src="https://img.shields.io/badge/runtime-Pi_Agent_|_OpenCode_|_Claude_Code_|_Codex_|_Antigravity-8B5CF6?style=flat-square" alt="Runtimes"></a>
-  <a href="#-为什么需要周报助手"><img src="https://img.shields.io/badge/Excel-100%25_Fidelity-107C41?style=flat-square" alt="Excel Fidelity"></a>
-  <a href="#-校验与测试"><img src="https://img.shields.io/badge/checks-22_tests_passing-0891B2?style=flat-square" alt="Tests"></a>
+  <a href="https://agentskills.io"><img src="https://img.shields.io/badge/standard-Agent_Skills-1B6B4A?style=flat-square&labelColor=181A1F" alt="Agent Skills Standard"></a>
+  <a href="#多平台兼容与外置框架适配"><img src="https://img.shields.io/badge/runtimes-Pi_|_Codex_|_DSH_|_Antigravity_|_Claude_Code-1B6B4A?style=flat-square&labelColor=181A1F" alt="Supported Runtimes"></a>
+  <a href="#校验与测试"><img src="https://img.shields.io/badge/tests-22_passing-1B6B4A?style=flat-square&labelColor=181A1F" alt="Tests Passing"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-4A4F5A?style=flat-square&labelColor=181A1F" alt="MIT License"></a>
 </p>
+
+**周报助手（Weekly Report Skill）** 把写周报拆成两段明确分工：**内容提炼交给大模型，校验与写盘交给确定性 Python 脚本**。你只需用自然语言口述一周工作，AI 完成职场化重构并在确认后以单元格级精度填入原生 `.xlsx` 模板，完整保留表头配色、合并单元格、边框与进度公式。
 
 ---
 
-## 💡 为什么需要周报助手？
+## 真实效果：口语碎碎念到正式周报
 
-每到周五下午，写周报往往面临两大痛点：
+### 1. 职场化润色对照
 
-1. **话术包装难**：做了一堆事情，但写出来全是"改了bug"、"对了接口"，口语化太重，难以体现工作成果与业务价值；
-2. **填表排版烦**：打开公司动辄几十列、带合并单元格和公式的 Excel 模板，复制粘贴经常搞坏样式、漏填协作人。
+润色遵循 **【精准动作动词】+【业务系统/功能模块】+【具体手段/工作重心】+【阶段成果/业务价值】** 公式，只提升表达精度，不编造未发生的事实、数据或协作人（详见 [`references/polishing.md`](references/polishing.md)）：
 
-**周报助手（Weekly Report Skill）** 把这个流程拆成两半 —— **把内容提炼交给大模型，把文件落地交给确定性 Python 引擎**。你只需说几句本周做的大白话，AI 完成职场规范化重构，零损保真地填充进公司标准 `.xlsx` 模板，直达桌面。
-
-<p align="center">
-  <img src="./assets/readme/workflow.svg" width="100%" alt="周报助手工作流：自然语言碎碎念 → 智能职场化提炼 → 预览卡片与确认锁 → 载荷校验 → 原生 Excel 安全写入。">
-</p>
-
----
-
-## ✨ 核心特性
-
-### 1. 智能职场化润色（底层核心能力）
-
-不是机械的关键词替换，而是理解业务上下文后，按 **【精准动词】+【业务系统/模块】+【关键手段/重心】+【阶段价值】** 结构化重塑：
-
-| 原始口语输入 | 职场规范化润色呈现（进 Excel 效果） |
+| 原始口语输入 | 职场规范化呈现（写入 Excel 内容） |
 | --- | --- |
-| "改了结算流水线的并发bug" | **排查并修复订单结算流水线并发冲突异常，优化分布式锁边界校验，确保交易幂等无误** |
+| "改了结算流水线的并发 bug" | **排查并修复订单结算流水线并发冲突异常，优化分布式锁边界校验，确保交易幂等无误** |
 | "跟产品对了多租户权限二期" | **参与用户中心多租户权限系统业务需求评审，对齐核心角色鉴权规则与验收标准，完成技术任务拆解** |
 | "写了几个接口并自测" | **完成核心业务模块 RESTful 接口开发与联调，通过接口幂等性验证与单元测试覆盖** |
 | "线上有点卡，查了下" | **排查并定位生产环境服务响应延迟瓶颈，优化慢查询 SQL 索引与缓存策略，提升接口响应效率** |
 
-润色只改**表达精度**，不改事实：不允许编造未发生的功能、虚构数据指标或捏造外部协作（见 [`references/polishing.md`](references/polishing.md)）。
+### 2. 端到端交互示例
 
-### 2. 100% 原生 Excel 零损保真
+```text
+用户：帮我写下本周周报，这周我排查了结算流水线的慢查询，另外完成了多租户权限接口开发，下周准备做订单网关回归测试。
 
-- 拒绝"生成一张不可选中文本的大长图"，也拒绝"导出一个丢了样式的 csv"。
-- 用 `openpyxl` 在**单元格级别**操作原生 `.xlsx`，完整保留企业模板的表头配色、合并单元格、进度计算公式与边框。
-- 含换行的文本自动套用 `wrap_text` + 顶端对齐。
+AI：已为你做职场化提炼，请补充以下关键细节：
+  1. 结算慢查询优化的完成状态是已完成吗？
+  2. 多租户权限接口联调的协作人是谁？
+  3. 下周订单网关回归测试的计划起止时间是？
 
-### 3. 跨周智能顺延继承
+用户：慢查询已完成；协作人是李四；下周一到周三做网关回归。
 
-用户只要说"**基于上周周报写**"：
+AI：[门 2] 预览与确认 — preconditions: PASS
+  周报预览
+  - 周期：2026/05/25 - 2026/05/29
+  - 姓名/部门：张三 / 核心业务研发部
+  --------------------------------------------------
+  1. 上周完成情况：
+     - [已完成] 排查并定位生产环境订单结算响应延迟瓶颈，优化慢查询 SQL 索引
+  2. 本周重点工作：
+     - [高] 推进用户中心多租户权限 RESTful 接口开发与联调（协作人：李四）
+  3. 下周工作计划：
+     - [高] 推进异步消息通知网关核心业务流回归测试与发布验证（2026-06-01至2026-06-03）
+  4. 饱和度评估：
+     - 饱和度：饱和（双线并行推进，开发与性能优化进度符合预期）
+  --------------------------------------------------
+  请确认以上内容无误，回复「确认」后我将基于企业标准 Excel 模板生成文件。
 
-- `--migrate-last-week` 自动解析上一份周报，把上上周报的「本周重点」顺延为「上周完成」、把「下周计划」顺延为「本周重点」；
-- AI 只跟用户核对差量（实际状态、变动的人与日期），大幅省掉重复输入。
+用户：确认
 
-### 4. 三道门的安全锁
+AI：[门 3] 校验 → 生成 → 交付 — preconditions: PASS
+  校验：validate_payload → ok
+  生成：generate_report  → success
+  文件路径：~/Desktop/周报/工作周报 - 张三 2026-05-25至2026-05-29.xlsx
+```
 
-| 门 | 内容 | 不通过会怎样 |
+---
+
+## 工作原理：三道门与确定性分工
+
+<p align="center">
+  <img src="./assets/readme/workflow.svg" width="100%" alt="三道门安全执行流水线：门 1 收集与润色，门 2 Markdown 预览与确认锁，门 3 静态载荷校验与 openpyxl 原生写入">
+</p>
+
+| 阶段 | 负责方 | 核心约束与不通过后果 |
 | --- | --- | --- |
-| 门 1 · 收集与润色 | 四大板块字段齐全（含每条协作人） | 停在收集，最多追问 2 轮，其余用默认值并显式告知 |
-| 门 2 · 预览与确认 | 必须呈递 Markdown 预览卡片并拿到用户明确确认 | 绝不生成文件 |
-| 门 3 · 校验与生成 | 先过载荷校验器，再交给生成引擎 | 校验不过就不写盘 |
+| **门 1 · 收集与润色** | 大模型 + `fields.md` / `polishing.md` | 核齐四大板块、周期与每条协作人；支持 `--migrate-last-week` 从上周顺延建议起步；缺项最多追问 2 轮 |
+| **门 2 · 预览与确认锁** | 大模型 + 用户显式回复 | 必须输出完整 Markdown 预览卡片并获明确「确认」；未确认前**绝不提前生成文件** |
+| **门 3 · 校验与原生落盘** | `validate_payload.py` + `generate_report.py` | 严禁用文本工具直接改 `.xlsx`；先过静态校验再由 `openpyxl` 单元格级写入，校验不通过拒绝写盘 |
 
-**绝不提前生成文件**、**严禁用文本工具直接改 `.xlsx`** —— 这两条写进了 `SKILL.md` 的硬门禁。
-
-### 5. 载荷校验器（机器可验的通过条件）
-
-写盘之前先跑 `validate_payload.py`，把"协作人漏填、优先级写成『紧急』、日期写成『下周三』、条数超过模板 5 行上限、周期只给了一个日期"这类问题挡在前面，并给出**可定位到字段路径**的报错：
+写盘前由纯标准库脚本 `scripts/validate_payload.py` 做静态拦截，所有报错精确到字段路径：
 
 ```json
 {
@@ -82,231 +91,217 @@
 
 ---
 
-## 🧭 Skill 架构
+## 多平台兼容与外置框架适配
 
-本 Skill 按 **"渐进披露 + 硬门禁 + 机器校验"** 组织：`SKILL.md` 只做路由与控制流，知识全部按需加载。
+本仓库采用 **单源内核 + 轻量外置清单（Single Source + Thin Wrappers）** 设计：`SKILL.md`、参考文档、工作流、Python 脚本与默认模板只维护一份在仓库根目录；各平台独有的插件清单、图标与注册入口存放在 `platforms/` 下，由安装脚本按目标平台自动组装，无需维护多份重复副本。
 
-```text
-SKILL.md                      # 控制流：三道门、7 条硬门禁、Execution Protocol
-├─ references/                # 用到才读的知识
-│  ├─ fields.md               #   四大板块必填清单 · 取值枚举 · 字段→单元格映射
-│  ├─ polishing.md            #   润色公式 · 转换对照表 · 真实性底线
-│  └─ cli-and-payload.md      #   CLI 命令表 · Payload 结构 · 环境变量
-├─ workflows/                 # 端到端流程
-│  ├─ A-new-report.md         #   全新填报（含预览卡片模板与数据流协议）
-│  └─ B-migrate-last-week.md  #   基于上周顺延更新
-└─ scripts/                   # 直接执行，不读进上下文
-   ├─ generate_report.py      #   生成引擎（openpyxl 写入）
-   └─ validate_payload.py     #   写盘前的静态校验器（无第三方依赖）
-```
+<p align="center">
+  <img src="./assets/readme/platforms.svg" width="100%" alt="单源内核与五大 Agent 平台外置框架适配架构：覆盖 Pi Agent、Codex、DeepSeek Harness、Antigravity 与 Claude Code">
+</p>
 
-三条设计原则：
+### 平台外置框架差异对照
 
-1. **SKILL.md 不装知识，只装"什么情况读哪个文件"** —— 主文件保持精简，长尾细节不进上下文。
-2. **每一步都有机器可验的通过条件** —— 校验器报错不带"感觉不对"，而是精确到 `this_week[0].collaborators`。
-3. **收敛阈值** —— 追问最多 2 轮、校验修正最多 3 轮、成功后不做主观重排，避免无限自我修正。
+| 平台 | 默认安装路径（轻量 Skill） | 外置框架 / 插件形态 | 对应仓内适配文件 | 生效方式 |
+| --- | --- | --- | --- | --- |
+| **Pi Agent** | `~/.pi/agent/skills/weekly-report/` | 原生识别目录根 `SKILL.md`（无需额外清单） | 根目录 `SKILL.md` | 在 Pi 会话执行 `/reload` |
+| **Codex** | `~/.codex/skills/weekly-report/` | UI 元数据 `agents/openai.yaml`；插件形态另需 `.codex-plugin/plugin.json` | `agents/openai.yaml`、`platforms/codex/` | 自动发现，可用 `$weekly-report` 唤醒 |
+| **DeepSeek Harness (DSH)** | `~/.dsh/skills/weekly-report/` 或 `<workspace>/.dsh/skills/weekly-report/` | 支持直接装入 `skills/`，或以 Cordis 原生 bundle 挂载（`ctx.skills.register()`） | `platforms/dsh/`（`package.json`、`cordis.patch.yml`、`index.js`、`icon.svg`） | 直装自动发现；bundle 形态写入 `dsh.profile.bundles` |
+| **Antigravity (AGY)** | `~/.gemini/config/skills/weekly-report/` 或 `<workspace>/.agents/skills/weekly-report/` | 全局插件需在 `~/.gemini/config/plugins/weekly-report/` 放置 `plugin.json`、`assets/logo.svg` 与 `skills/weekly-report/` | `platforms/antigravity/`（`plugin.json`、`assets/logo.svg`） | 插件加载后可在定制页启停，可用 `agy plugin validate --strict` 校验 |
+| **Claude Code** | `~/.claude/skills/weekly-report/` | 原生识别 `SKILL.md`；插件市场形态使用 `.claude-plugin/` | `platforms/claude-code/`（`plugin.json`、`marketplace.json`） | 自动发现，按描述触发或手动调用 |
+| **OpenCode** | `~/.config/opencode/superpowers/skills/weekly-report/` | 原生识别目录根 `SKILL.md` | 根目录 `SKILL.md` | 启动或重载后生效 |
 
 ---
 
-## 🚀 快速开始
+## 快速开始
 
-### 1. 安装 Skill
+### 1. 环境准备
 
-遵循 [Agent Skills 标准规范](https://agentskills.io)，可一键装入你最顺手的 Coding Harness：
-
-#### 方案 A：Pi Agent (强烈推荐)
-
-```bash
-# 克隆到 Pi 全局 Skill 目录
-git clone https://github.com/drydraft/weekly-report-skill.git \
-  ~/.pi/agent/skills/weekly-report
-```
-
-> 在 Pi 中输入 `/reload` 即可立即就绪。
-
-#### 方案 B：OpenCode
-
-```bash
-git clone https://github.com/drydraft/weekly-report-skill.git \
-  ~/.config/opencode/superpowers/skills/weekly-report
-```
-
-#### 方案 C：Codex
-
-```bash
-git clone https://github.com/drydraft/weekly-report-skill.git \
-  ~/.codex/skills/weekly-report
-```
-
-#### 方案 D：Antigravity（全局插件目录）
-
-```bash
-git clone https://github.com/drydraft/weekly-report-skill.git \
-  ~/.gemini/config/plugins/weekly-report/skills/weekly-report
-```
-
-> 另在 `~/.gemini/config/plugins/weekly-report/plugin.json` 中声明插件元数据后即可在 Antigravity 定制页直接管理。
-
-#### 方案 E：Claude Code / 通用 Agent
-
-```bash
-git clone https://github.com/drydraft/weekly-report-skill.git \
-  ~/.agents/skills/weekly-report
-```
-
-### 2. 依赖检查
-
-生成引擎基于 Python 与 `openpyxl`（校验器只用标准库，未装 `openpyxl` 时也能跑）：
+生成引擎依赖 Python 3.9+ 与 `openpyxl`（载荷校验器 `validate_payload.py` 仅使用 Python 标准库，无第三方依赖）：
 
 ```bash
 pip install openpyxl
-python scripts/generate_report.py --validate-template   # 应输出 status: success
 ```
 
----
+### 2. 一键安装到指定平台（推荐）
 
-## 💬 使用体验示例
+克隆仓库后，通过跨平台安装脚本按需安装到任意一个或多个平台。脚本会自动组装目标平台的外置包装，并**保留目标目录中你已放入的公司定制 `.xlsx` 模板**不被覆盖。
 
-只需在你的 Agent 会话里自然打字：
+**Windows (PowerShell)：**
 
-```text
-用户：帮我写下本周周报，这周我排查了结算流水线的慢查询，另外完成了多租户权限接口开发，下周准备做订单网关回归测试。
+```powershell
+git clone https://github.com/drydraft/weekly-report-skill.git
+cd weekly-report-skill
 
-AI：收到！已为你进行职场化提炼，请确认以下细节：
-  1. 结算慢查询优化的完成状态是已完成吗？
-  2. 多租户权限接口联调的协作人是谁？
-  3. 下周订单网关回归测试的计划起止时间是？
+# 安装到单个平台（可选：pi / codex / codex-plugin / dsh / dsh-bundle / antigravity / antigravity-skill / claude / claude-plugin / opencode / all）
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\install.ps1 -Target antigravity
 
-用户：慢查询已完成；协作人是李四；下周一到周三做网关回归。
+# 一次安装到五大主力平台（pi、codex、dsh、antigravity、claude）
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\install.ps1 -Target all
 
-AI：[门 2] 预览与确认 — preconditions: PASS
-  📋 周报预览
-  - 周期：2026/05/25 - 2026/05/29
-  - 姓名/部门：张三 / 核心业务研发部
-  --------------------------------------------------
-  1. 上周完成情况：
-     - [已完成] 排查并定位生产环境订单结算响应延迟瓶颈，优化慢查询 SQL 索引
-  2. 本周重点工作：
-     - [高] 推进用户中心多租户权限 RESTful 接口开发与联调（协作人：李四）
-  3. 下周工作计划：
-     - [高] 推进异步消息通知网关核心业务流回归测试与发布验证（2026-06-01至2026-06-03）
-  4. 饱和度评估：
-     - 饱和度：饱和（双线并行推进，开发与性能优化进度符合预期）
-  --------------------------------------------------
-  👉 请确认以上内容无误，回复「确认」后我将为您写入企业标准 Excel 模板。
-
-用户：确认
-
-AI：[门 3] 校验 → 生成 → 交付 — preconditions: PASS
-  校验：validate_payload → ok
-  生成：generate_report  → success
-  🎉 文件路径：C:\Users\Administrator\Desktop\周报\工作周报 - 张三 2026-05-25至2026-05-29.xlsx
+# 仅演练查看目标路径，不写盘
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\install.ps1 -Target all -DryRun
 ```
 
----
-
-## 🛠️ CLI 接口
-
-技能自带完备的命令行工具链，可用于自动化流水线与排障：
+**macOS / Linux：**
 
 ```bash
-# 0. 写盘前校验载荷（推荐先跑）
+git clone https://github.com/drydraft/weekly-report-skill.git
+cd weekly-report-skill
+
+# 安装到单个或多个平台
+./scripts/install.sh antigravity
+./scripts/install.sh pi codex dsh claude
+
+# 一次安装到五大主力平台
+./scripts/install.sh all
+```
+
+<details>
+<summary>手动直接克隆安装命令（兼容旧版 git pull 方式）</summary>
+
+根目录保留完整 Agent Skill 标准结构，支持直接克隆到各平台轻量技能目录：
+
+```bash
+# Pi Agent（克隆后在 Pi 中输入 /reload）
+git clone https://github.com/drydraft/weekly-report-skill.git ~/.pi/agent/skills/weekly-report
+
+# Codex（自动读取 agents/openai.yaml）
+git clone https://github.com/drydraft/weekly-report-skill.git ~/.codex/skills/weekly-report
+
+# DeepSeek Harness (DSH)
+git clone https://github.com/drydraft/weekly-report-skill.git ~/.dsh/skills/weekly-report
+
+# Claude Code
+git clone https://github.com/drydraft/weekly-report-skill.git ~/.claude/skills/weekly-report
+
+# Antigravity（轻量独立 Skill；如需完整插件管理页请使用上方 install 脚本）
+git clone https://github.com/drydraft/weekly-report-skill.git ~/.gemini/config/skills/weekly-report
+
+# OpenCode
+git clone https://github.com/drydraft/weekly-report-skill.git ~/.config/opencode/superpowers/skills/weekly-report
+```
+
+</details>
+
+### 3. 模板连通性自检
+
+安装完成后执行模板校验，确认返回 `status: success` 及四个区块定位行号：
+
+```bash
+python scripts/generate_report.py --validate-template
+```
+
+Antigravity 插件用户可额外运行严格清单校验：
+
+```bash
+agy plugin validate ~/.gemini/config/plugins/weekly-report --strict
+```
+
+---
+
+## CLI 工具链与自定义配置
+
+### 命令行接口
+
+```bash
+# 0. 写盘前静态校验载荷（无第三方依赖）
 python scripts/validate_payload.py payload.json
 
-# 1. 验证模板完整性（会回显识别到的区块行）
+# 1. 验证 Excel 模板结构与四大区块定位行
 python scripts/generate_report.py --validate-template
 
-# 2. 从 JSON 载荷生成 Excel
+# 2. 根据已确认的 JSON 载荷生成 Excel 周报
 python scripts/generate_report.py payload.json
 
-# 3. 读取上一份周报的完整结构化数据
+# 3. 读取输出目录中最新一份周报的结构化数据
 python scripts/generate_report.py --last-week
 
-# 4. 提取上周周报的顺延迁移建议
+# 4. 提取上一份周报的跨周顺延迁移建议
 python scripts/generate_report.py --migrate-last-week
 
 # 5. 运行内置示例生成自检
 python scripts/generate_report.py --test
 ```
 
-`generate_report.py` 也支持从 stdin 读（`-`）与内联 JSON（`--json '<json>'`）。载荷结构见 [`references/cli-and-payload.md`](references/cli-and-payload.md)。
+`generate_report.py` 同样支持从 stdin 读取（`-`）及内联 JSON（`--json '<json>'`），完整数据结构与字段约束见 [`references/cli-and-payload.md`](references/cli-and-payload.md) 与 [`references/fields.md`](references/fields.md)。
 
----
+### 环境变量与公司模板定制
 
-## ⚙️ 配置与自定义
-
-无需改代码，用环境变量覆盖默认行为：
+无需修改脚本，通过环境变量即可切换模板与输出目录：
 
 | 环境变量 | 说明 | 默认值 |
 | --- | --- | --- |
-| `WKR_TEMPLATE_PATH` | 自定义 Excel 模板路径 | Skill 自带 `templates/工作周报模板.xlsx` |
-| `WKR_OUTPUT_DIR` | 周报 Excel 默认保存目录 | 用户桌面目录 `~/Desktop/周报/` |
+| `WKR_TEMPLATE_PATH` | 自定义公司 Excel 周报模板路径 | `<skill_dir>/templates/工作周报模板.xlsx` |
+| `WKR_OUTPUT_DIR` | 周报 `.xlsx` 默认输出目录 | `~/Desktop/周报/` |
 
-换成自家公司模板时：设置 `WKR_TEMPLATE_PATH` 指向对应模板文件（放在 `templates/` 下也需显式设置 `WKR_TEMPLATE_PATH`，不会自动覆盖默认模板），再跑一次 `--validate-template` 确认脚本能识别到四个区块（`上周工作完成情况` / `本周重要工作项` / `下周工作计划` / `工作饱和度评估`）。区块是按 **A 列表头文字**动态定位的，所以改版模板只要保留这些标题即可。
+使用自定义公司模板时，请显式设置 `WKR_TEMPLATE_PATH` 指向对应文件（仅将新模板放入 `templates/` 目录不会自动覆盖默认模板），然后运行 `--validate-template` 确认脚本能够识别 `上周工作完成情况`、`本周重要工作项`、`下周工作计划`、`工作饱和度评估` 四个 A 列区块标题。
 
 ---
 
-## ✅ 校验与测试
+## 校验与测试
 
 ```bash
-# 单元测试（22 个用例：生成引擎 + 校验器）
+# 运行全部 22 个单元测试（生成引擎 + 载荷校验器）
+python -m unittest discover -s tests -v
+
+# 或使用 pytest
 python -m pytest tests/ -q
 
-# 生成引擎自带自检
-python scripts/generate_report.py --test
-python scripts/generate_report.py --validate-template
-
-# 校验器单独试跑
+# 校验器独立试跑
 python scripts/validate_payload.py --json '{"period":"2026/05/25-2026/05/29","name":"张三","department":"IT部","last_week":[],"this_week":[],"next_week":[]}'
 ```
 
-行为契约由 `evals/evals.json` 描述：每份周报都必须过三道门，且饱和度固定写「饱和」、文件名固定为 `工作周报 - {姓名} {起始}至{结束}.xlsx`。
+行为验收规范定义在 [`evals/evals.json`](evals/evals.json)：必须按序通过三道门、饱和度固定写入「饱和」、文件名严格统一为 `工作周报 - {姓名} {起始}至{结束}.xlsx`。
 
 ---
 
-## 📁 项目结构
+## 项目结构
 
 ```text
 weekly-report-skill/
-├── SKILL.md                        # Agent 技能规范：控制流 · 硬门禁 · Execution Protocol
-├── README.md                       # 本文档
-├── LICENSE                         # MIT
+├── SKILL.md                        # 核心技能规范：三道门控制流、硬门禁、按需加载路由
+├── README.md                       # 项目说明与多平台安装指南
+├── LICENSE                         # MIT License
 ├── agents/
-│   └── openai.yaml                 # Codex UI 元数据
-├── references/                     # 按需加载的知识
-│   ├── fields.md                   #   必填字段 · 取值枚举 · 单元格映射
-│   ├── polishing.md                #   职场化润色规范
-│   └── cli-and-payload.md          #   CLI · Payload · 环境变量
-├── workflows/                      # 端到端流程
-│   ├── A-new-report.md             #   全新填报
-│   └── B-migrate-last-week.md      #   顺延更新
+│   └── openai.yaml                 # Codex UI 元数据（名称、简介、默认提示词）
+├── platforms/                      # 轻量外置框架清单（单源复用，不复制 SKILL.md）
+│   ├── antigravity/                #   Antigravity 插件清单（plugin.json + assets/logo.svg）
+│   ├── codex/                      #   Codex 插件清单（.codex-plugin/plugin.json）
+│   ├── claude-code/                #   Claude Code 插件与市场清单（.claude-plugin/）
+│   └── dsh/                        #   DeepSeek Harness Cordis bundle（package.json + index.js + cordis.patch.yml）
+├── references/                     # 按需加载的知识库
+│   ├── fields.md                   #   四大板块必填字段、取值枚举、单元格映射
+│   ├── polishing.md                #   职场化润色公式、转换对照表、真实性底线
+│   └── cli-and-payload.md          #   CLI 接口、Payload 结构与环境变量
+├── workflows/                      # 端到端操作流程
+│   ├── A-new-report.md             #   全新周报填报流程
+│   └── B-migrate-last-week.md      #   基于上周周报顺延更新流程
 ├── scripts/
-│   ├── generate_report.py          # 生成引擎（openpyxl 写入，自带 CLI）
-│   └── validate_payload.py         # 载荷静态校验器（纯标准库）
+│   ├── generate_report.py          #   Excel 生成引擎（openpyxl 单元格级写入）
+│   ├── validate_payload.py         #   载荷静态校验器（纯标准库）
+│   ├── install.ps1                 #   Windows 跨平台安装脚本
+│   └── install.sh                  #   macOS / Linux 跨平台安装脚本
 ├── templates/
-│   └── 工作周报模板.xlsx           # 开箱自带的标准 Excel 模板
-├── tests/
-│   ├── test_generate_report.py     # 生成引擎单测
-│   └── test_validate_payload.py    # 校验器单测
+│   └── 工作周报模板.xlsx           #   开箱自带的标准 Excel 模板
+├── tests/                          # 单元测试（22 个用例）
 ├── evals/
-│   └── evals.json                  # 行为验收用例
-└── assets/
-    └── readme/
-        ├── hero.svg                # 响应式项目封面大图
-        └── workflow.svg            # 执行与交互流程图
+│   └── evals.json                  # 行为契约验收用例
+└── assets/readme/
+    ├── hero.svg                    # 首屏视觉与真实单元格样本
+    ├── workflow.svg                # 三道门安全执行流水线
+    └── platforms.svg               # 五大平台外置适配架构图
 ```
 
 ---
 
-## 🤝 贡献与反馈
+## 边界与适用范围
 
-欢迎提交 Issue 或 Pull Request！
-
-- 发现字段映射异常或模板不兼容 → [提交 Issue](https://github.com/drydraft/weekly-report-skill/issues)
-- 适配更多公司定制模板或功能增强 → 欢迎提 PR！提交前请跑一遍 `python -m pytest tests/ -q`
+- **适用**：日常自然语言口述整理周报、基于历史周报做跨周顺延、需保留公司标准 Excel 样式与公式的场景。
+- **不适用**：通用 Excel 公式问答、日程/日历管理、以及 Word / PPT / 邮件等非 `.xlsx` 周报输出。
+- **已知限制**：模板每板块固定上限为 5 条数据（超出时由 `validate_payload.py` 拦截提醒合并）；跨周顺延默认按修改时间匹配输出目录中 `*周报 - *.xlsx` 且读取 `员工工作周报` 工作表，若是多页部门汇总表需先指定对应个人工作表内容。
 
 ---
 
-<p align="center">
-  Made with ☕ by <a href="https://github.com/drydraft">drydraft</a> · Powered by <a href="https://agentskills.io">Agent Skills</a>
-</p>
+## 贡献与协议
+
+欢迎提交 Issue 或 Pull Request 补充更多模板兼容性或平台适配器（提交前请运行 `python -m unittest discover -s tests -v`）。本项目采用 [MIT License](LICENSE) 开源。

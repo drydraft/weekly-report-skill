@@ -1,0 +1,41 @@
+{
+  "name": "dsh-weekly-report",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "Weekly Report Assistant skill bundle for DeepSeek Harness (DSH).",
+  "license": "MIT",
+  "author": {
+    "name": "drydraft",
+    "url": "https://github.com/drydraft"
+  },
+  "homepage": "https://github.com/drydraft/weekly-report-skill",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drydraft/weekly-report-skill.git",
+    "directory": "platforms/dsh"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "weekly-report",
+    "excel",
+    "bundled-skill"
+  ],
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./icon": "./icon.svg"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "skills",
+    "icon.svg"
+  ]
+}

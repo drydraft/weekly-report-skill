@@ -1,0 +1,17 @@
+{
+  "name": "weekly-report",
+  "displayName": "Weekly Report Assistant (周报助手)",
+  "version": "0.3.0",
+  "description": "把一周的大白话工作碎碎念职场化提炼，校验载荷并写入公司标准 Excel 周报模板生成 .xlsx 文件。",
+  "author": {
+    "name": "drydraft",
+    "url": "https://github.com/drydraft"
+  },
+  "repository": "https://github.com/drydraft/weekly-report-skill",
+  "logo": "assets/logo.svg",
+  "suggestedPrompts": [
+    "帮我写本周周报",
+    "基于上周周报顺延更新本周周报",
+    "查看上周周报内容并校验模板"
+  ]
+}

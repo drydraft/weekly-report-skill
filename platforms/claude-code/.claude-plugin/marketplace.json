@@ -1,0 +1,21 @@
+{
+  "name": "drydraft-weekly-report",
+  "owner": {
+    "name": "drydraft",
+    "url": "https://github.com/drydraft"
+  },
+  "description": "Weekly Report Assistant skill packaged as an installable Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "weekly-report",
+      "source": "./",
+      "description": "Polish weekly work updates into structured reports, validate payloads, and fill standard Excel (.xlsx) templates.",
+      "category": "productivity",
+      "keywords": [
+        "weekly-report",
+        "excel",
+        "agent-skill"
+      ]
+    }
+  ]
+}

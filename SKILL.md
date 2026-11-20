@@ -47,7 +47,7 @@ description: "把一周的大白话工作碎碎念职场化提炼，填充进公
 
 ## Files — Load On Demand
 
-**`<skill_dir>` 为本 `SKILL.md` 所在目录**（Antigravity 插件默认 `~/.gemini/config/plugins/weekly-report/skills/weekly-report`，Codex 默认 `~/.codex/skills/weekly-report`，Pi Agent 默认 `~/.pi/agent/skills/weekly-report`）。调用脚本时使用实际绝对路径。
+**`<skill_dir>` 为本 `SKILL.md` 所在目录**（按平台常见路径：Pi `~/.pi/agent/skills/weekly-report`、Codex `~/.codex/skills/weekly-report`、DeepSeek Harness `~/.dsh/skills/weekly-report`、Antigravity `~/.gemini/config/plugins/weekly-report/skills/weekly-report`、Claude Code `~/.claude/skills/weekly-report`）。调用脚本时使用实际绝对路径。
 若需使用公司定制模板，可放置到 `templates/` 下并设置 `WKR_TEMPLATE_PATH` 指向它；默认仍为 `templates/工作周报模板.xlsx`。
 
 | File | When to load |

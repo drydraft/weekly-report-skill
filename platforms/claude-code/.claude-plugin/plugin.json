@@ -1,0 +1,21 @@
+{
+  "name": "weekly-report",
+  "version": "0.3.0",
+  "description": "Polish weekly work updates into structured reports, validate payloads, and fill standard Excel (.xlsx) templates.",
+  "author": {
+    "name": "drydraft",
+    "url": "https://github.com/drydraft"
+  },
+  "homepage": "https://github.com/drydraft/weekly-report-skill",
+  "repository": "https://github.com/drydraft/weekly-report-skill",
+  "license": "MIT",
+  "keywords": [
+    "weekly-report",
+    "excel",
+    "openpyxl",
+    "agent-skill"
+  ],
+  "skills": [
+    "./skills/weekly-report"
+  ]
+}

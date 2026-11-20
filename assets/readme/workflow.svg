@@ -1,86 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="arch-title arch-desc">
-  <title id="arch-title">周报助手交互与执行流水线</title>
-  <desc id="arch-desc">从自然语言输入到职场提炼、Markdown卡片确认再到原生Excel安全落地的完整工作流</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="270" viewBox="0 0 1200 270" role="img" aria-labelledby="wf-title wf-desc">
+  <title id="wf-title">先确认，再写盘 — 三道门执行流水线</title>
+  <desc id="wf-desc">01 收集与润色，02 预览与确认锁，03 校验与原生落盘。</desc>
 
-  <defs>
-    <linearGradient id="step-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#131B2A"/>
-      <stop offset="100%" stop-color="#0F172A"/>
-    </linearGradient>
-    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 8 5 L 0 9 z" fill="#475569"/>
-    </marker>
-  </defs>
+  <!-- Warm Paper Canvas (#F7F6F2) -->
+  <rect width="1200" height="270" rx="22" fill="#F7F6F2"/>
+  <rect x="1" y="1" width="1198" height="268" rx="21" fill="none" stroke="#E5E1D8" stroke-width="1.5"/>
 
-  <!-- Background Canvas -->
-  <rect width="1200" height="260" rx="16" fill="#0B0F17" stroke="#1E293B" stroke-width="1.5"/>
+  <!-- Header -->
+  <text x="64" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" font-weight="600" fill="#6B707B" letter-spacing="1.6">THREE-GATE WORKFLOW</text>
+  <text x="64" y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="32" font-weight="800" fill="#181A1F">先确认，再写盘</text>
+  <text x="1136" y="84" text-anchor="end" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="18" fill="#6B707B">大模型负责内容 · Python 脚本负责写盘</text>
 
-  <!-- Step 1: 口语输入 -->
-  <g transform="translate(48, 36)">
-    <rect width="240" height="188" rx="10" fill="url(#step-bg)" stroke="#334155" stroke-width="1"/>
-    <rect x="16" y="16" width="32" height="24" rx="4" fill="#1E293B"/>
-    <text x="26" y="32" font-family="ui-monospace, monospace" font-size="12" font-weight="bold" fill="#38BDF8">01</text>
-    <text x="56" y="33" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#F8FAFC">自然语言碎碎念</text>
-    <path d="M 16 52 L 224 52" stroke="#1E293B" stroke-width="1"/>
-    
-    <text x="16" y="74" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">无需死记表格复杂格式：</text>
-    <rect x="16" y="86" width="208" height="54" rx="6" fill="#090D14" stroke="#1E293B"/>
-    <text x="24" y="106" font-family="-apple-system, sans-serif" font-size="11" fill="#64748B">"改了积分一票否决bug，</text>
-    <text x="24" y="126" font-family="-apple-system, sans-serif" font-size="11" fill="#64748B">跟产品对了下周发版..."</text>
-    <text x="16" y="162" font-family="-apple-system, sans-serif" font-size="11" fill="#10B981">✓ 支持从上周周报自动继承</text>
+  <!-- Smooth Dashed Connecting Track -->
+  <line x1="210" y1="158" x2="990" y2="158" stroke="#D5D0C5" stroke-width="2" stroke-dasharray="6 6"/>
+
+  <!-- Step 01 -->
+  <g id="step-1" transform="translate(64, 126)">
+    <rect width="320" height="106" rx="14" fill="#FFFFFF" stroke="#E4E0D8" stroke-width="1.2"/>
+    <circle cx="42" cy="53" r="22" fill="#181A1F"/>
+    <text x="42" y="60" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="700" fill="#FFFFFF">01</text>
+    <text x="80" y="45" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" fill="#181A1F">收集与润色</text>
+    <text x="80" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="18" fill="#6B707B">口述或顺延 · 补齐协作人</text>
   </g>
 
-  <!-- Arrow 1 -> 2 -->
-  <path d="M 298 130 L 328 130" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
-
-  <!-- Step 2: 智能职场化润色 -->
-  <g transform="translate(338, 36)">
-    <rect width="240" height="188" rx="10" fill="url(#step-bg)" stroke="#0284C7" stroke-width="1.2"/>
-    <rect x="16" y="16" width="32" height="24" rx="4" fill="#0369A1"/>
-    <text x="26" y="32" font-family="ui-monospace, monospace" font-size="12" font-weight="bold" fill="#E0F2FE">02</text>
-    <text x="56" y="33" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#38BDF8">智能职场化提炼</text>
-    <path d="M 16 52 L 224 52" stroke="#1E293B" stroke-width="1"/>
-
-    <text x="16" y="74" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">动作+系统+手段+价值：</text>
-    <rect x="16" y="86" width="208" height="54" rx="6" fill="#090D14" stroke="#1E293B"/>
-    <text x="24" y="106" font-family="-apple-system, sans-serif" font-size="11" fill="#38BDF8">"排查并修复积分逻辑异常，</text>
-    <text x="24" y="126" font-family="-apple-system, sans-serif" font-size="11" fill="#38BDF8">优化边界校验确保准确..."</text>
-    <text x="16" y="162" font-family="-apple-system, sans-serif" font-size="11" fill="#38BDF8">✓ 主动追问责任人与协作人</text>
+  <!-- Step 02 (Focal Warm Coral Accent) -->
+  <g id="step-2" transform="translate(440, 126)">
+    <rect width="320" height="106" rx="14" fill="#FFFFFF" stroke="#E06D44" stroke-width="1.8"/>
+    <circle cx="42" cy="53" r="22" fill="#E06D44"/>
+    <text x="42" y="60" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="700" fill="#FFFFFF">02</text>
+    <text x="80" y="45" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" fill="#181A1F">预览与确认锁</text>
+    <text x="80" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="18" font-weight="600" fill="#C95830">未获「确认」绝不生成</text>
   </g>
 
-  <!-- Arrow 2 -> 3 -->
-  <path d="M 588 130 L 618 130" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
-
-  <!-- Step 3: Markdown 预览确认 -->
-  <g transform="translate(628, 36)">
-    <rect width="240" height="188" rx="10" fill="url(#step-bg)" stroke="#334155" stroke-width="1"/>
-    <rect x="16" y="16" width="32" height="24" rx="4" fill="#1E293B"/>
-    <text x="26" y="32" font-family="ui-monospace, monospace" font-size="12" font-weight="bold" fill="#F59E0B">03</text>
-    <text x="56" y="33" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#F8FAFC">预览卡片与确认锁</text>
-    <path d="M 16 52 L 224 52" stroke="#1E293B" stroke-width="1"/>
-
-    <text x="16" y="74" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">严格遵守生成安全底线：</text>
-    <rect x="16" y="86" width="208" height="54" rx="6" fill="#090D14" stroke="#1E293B"/>
-    <text x="24" y="106" font-family="-apple-system, sans-serif" font-size="11" fill="#F59E0B">📋 Markdown 排版卡片核对</text>
-    <text x="24" y="126" font-family="-apple-system, sans-serif" font-size="11" fill="#E2E8F0">用户回复「确认」后方执行</text>
-    <text x="16" y="162" font-family="-apple-system, sans-serif" font-size="11" fill="#F59E0B">✓ 杜绝幻觉与提前误生成</text>
-  </g>
-
-  <!-- Arrow 3 -> 4 -->
-  <path d="M 878 130 L 908 130" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
-
-  <!-- Step 4: Python openpyxl 落地 -->
-  <g transform="translate(918, 36)">
-    <rect width="234" height="188" rx="10" fill="url(#step-bg)" stroke="#107C41" stroke-width="1.2"/>
-    <rect x="16" y="16" width="32" height="24" rx="4" fill="#107C41"/>
-    <text x="26" y="32" font-family="ui-monospace, monospace" font-size="12" font-weight="bold" fill="#FFFFFF">04</text>
-    <text x="56" y="33" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="700" fill="#22C55E">原生 Excel 安全写入</text>
-    <path d="M 16 52 L 218 52" stroke="#1E293B" stroke-width="1"/>
-
-    <text x="16" y="74" font-family="-apple-system, sans-serif" font-size="12" fill="#94A3B8">Python openpyxl 引擎：</text>
-    <rect x="16" y="86" width="202" height="54" rx="6" fill="#090D14" stroke="#1E293B"/>
-    <text x="24" y="106" font-family="ui-monospace, monospace" font-size="11" fill="#22C55E">工作周报 - xxx.xlsx</text>
-    <text x="24" y="126" font-family="-apple-system, sans-serif" font-size="11" fill="#64748B">直达桌面 ~/Desktop/周报/</text>
-    <text x="16" y="162" font-family="-apple-system, sans-serif" font-size="11" fill="#22C55E">✓ 单元格公式、样式 100% 保真</text>
+  <!-- Step 03 (Emerald Finish) -->
+  <g id="step-3" transform="translate(816, 126)">
+    <rect width="320" height="106" rx="14" fill="#FFFFFF" stroke="#1B6B4A" stroke-width="1.5"/>
+    <circle cx="42" cy="53" r="22" fill="#1B6B4A"/>
+    <text x="42" y="60" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18" font-weight="700" fill="#FFFFFF">03</text>
+    <text x="80" y="45" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="22" font-weight="700" fill="#181A1F">校验与落盘</text>
+    <text x="80" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="18" fill="#1B6B4A">过静态校验写入 .xlsx</text>
   </g>
 </svg>

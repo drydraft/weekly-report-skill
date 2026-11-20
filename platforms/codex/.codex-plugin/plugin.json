@@ -1,0 +1,33 @@
+{
+  "name": "weekly-report",
+  "version": "0.3.0",
+  "description": "Polish weekly work updates into structured reports, validate payloads, and fill standard Excel (.xlsx) templates.",
+  "author": {
+    "name": "drydraft",
+    "url": "https://github.com/drydraft"
+  },
+  "homepage": "https://github.com/drydraft/weekly-report-skill",
+  "repository": "https://github.com/drydraft/weekly-report-skill",
+  "license": "MIT",
+  "keywords": [
+    "weekly-report",
+    "excel",
+    "openpyxl",
+    "agent-skill"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Weekly Report Assistant",
+    "shortDescription": "Polish weekly work updates and fill Excel weekly report templates.",
+    "longDescription": "Guides fact collection through a three-gate confirmation workflow, validates payloads, and writes standard Excel weekly reports without losing template styles or formulas.",
+    "developerName": "drydraft",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "使用 $weekly-report 帮我整理并生成本周工作周报。"
+    ]
+  }
+}
